@@ -62,5 +62,15 @@ def login():
 
     return render_template('login.html')
 
+@app.route('/logout')
+def logout():
+    session.clear()
+    return redirect(url_for('index'))
+
+@app.before_app_request
+def load_logged_in_user():
+    g.user = session.get('user_id')
+
+
 if __name__ == '__main__':
     app.run()
