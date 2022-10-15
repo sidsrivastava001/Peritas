@@ -6,32 +6,66 @@
 </div>
 <table style="height: 20px;">
 </table>
+{% if g.user %}
 <div class="container text-center position-absolute bottom-0 start-50 translate-middle">
-    <div class="row">
-        <div class="col">
-        </div>
-        <div class="col">
-        </div>
-      <div class="col-2">
-        <a class = "btn btn-outline-primary btn-lg" href="{{ url_for('register') }}" >Register</a>
-      </div>
-      <div class="col-2">
-        <a class = "btn btn-outline-primary btn-lg" href="{{ url_for('login') }}" >Login</a>
-      </div>
+  <div class="row">
       <div class="col">
       </div>
       <div class="col">
       </div>
+    <div class="col-2">
+        <a class = "btn btn-outline-primary btn-lg" href="{{ url_for('index') }}" >Fill out Form</a>
     </div>
-    <div class="row">
-        <div class="col">
-            <p></p>
-        </div>
+    <div class="col-2">
+      <a class = "btn btn-outline-primary btn-lg" href="{{ url_for('index') }}" >View List</a>
     </div>
-    <div class="row">
-        <div class="col">
-            <p></p>
-        </div>
+    <div class="col-2">
+      <a class = "btn btn-outline-primary btn-lg" href="{{ url_for('login') }}" >Logout</a>
+    </div>
+    <div class="col">
+    </div>
+    <div class="col">
     </div>
   </div>
+  <div class="row">
+      <div class="col">
+          <p></p>
+      </div>
+  </div>
+  <div class="row">
+      <div class="col">
+          <p></p>
+      </div>
+  </div>
+</div>
+{% else %}
+<div class="container text-center position-absolute bottom-0 start-50 translate-middle">
+  <div class="row">
+      <div class="col">
+      </div>
+      <div class="col">
+      </div>
+    <div class="col-2">
+        <a class = "btn btn-outline-primary btn-lg" href="{{ url_for('register') }}" >Register</a>
+    </div>
+    <div class="col-2">
+      <a class = "btn btn-outline-primary btn-lg" href="{{ url_for('login') }}" >Login</a>
+    </div>
+    <div class="col">
+    </div>
+    <div class="col">
+    </div>
+  </div>
+  <div class="row">
+      <div class="col">
+          <p></p>
+      </div>
+  </div>
+  <div class="row">
+      <div class="col">
+          <p></p>
+      </div>
+  </div>
+</div>
+{% endif %}
 {% endblock %}

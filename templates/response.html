@@ -1,0 +1,23 @@
+{% extends 'base.html' %}
+
+{% block header %}
+  {% block title %}Register{% endblock %}
+{% endblock %}
+
+{% block content %}
+  <header><h1 class="fw-bolder position-absolute bottom-50 start-50 translate-middle">Register Account</h1></header>
+  <form method="post">
+    <div class="position-absolute top-50 start-50 translate-middle">
+      <br> <br> <br> <br> <br> <br>
+      <label for="username">Username</label>
+      <input name="username" id="username" required> <br><br>
+      <label for="password">Password</label>
+      <input type="password" name="password" id="password" required> <br><br>
+      <div class="row">
+        <div class="col"></div>
+        <div class="col"><input type="submit" value="Register"></div>
+        <div class="col"></div>
+      </div>
+    </div>
+  </form>
+{% endblock %}
