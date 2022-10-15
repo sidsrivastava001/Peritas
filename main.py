@@ -67,7 +67,7 @@ def logout():
     session.clear()
     return redirect(url_for('index'))
 
-@app.before_app_request
+@app.before_request
 def load_logged_in_user():
     g.user = session.get('user_id')
 
