@@ -5,11 +5,19 @@
 {% endblock %}
 
 {% block content %}
-  <form method="post">
+<header><h1 class="fw-bolder position-absolute bottom-50 start-50 translate-middle">Login</h1></header>
+<form method="post">
+  <div class="position-absolute top-50 start-50 translate-middle">
+    <br> <br> <br> <br> <br> <br>
     <label for="username">Username</label>
-    <input name="username" id="username" required><br><br>
+    <input name="username" id="username" required> <br><br>
     <label for="password">Password</label>
     <input type="password" name="password" id="password" required> <br><br>
-    <input type="submit" value="Login">
-  </form>
+    <div class="row">
+      <div class="col"></div>
+      <div class="col"><input type="submit" value="Login"></div>
+      <div class="col"></div>
+    </div>
+  </div>
+</form>
 {% endblock %}
