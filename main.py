@@ -4,7 +4,13 @@ from flask import (
 import flask
 from firebase import firebase, db
 
+
+
 app = flask.Flask(__name__)
+app.config.from_mapping(
+        SECRET_KEY='dev'
+    )
+
 @app.route('/index')
 def index():
     return render_template('index.html')
@@ -33,16 +39,23 @@ def login():
     if request.method == 'POST':
         username = request.form['username']
         password = request.form['password']
-        users = db.child("users")
+        user = None
+        pwd = None
+        error = None
+        for x in db.child("users").get().each():
+            if(x.key() == username):
+                user = username
+                if(x.val()["password"] == password):
+                    pwd = password
 
         if user is None:
             error = 'Incorrect username.'
-        elif not check_password_hash(user['password'], password):
+        elif pwd is None:
             error = 'Incorrect password.'
 
         if error is None:
             session.clear()
-            session['user_id'] = user['id']
+            session['user_id'] = user
             return redirect(url_for('index'))
 
         flash(error)
