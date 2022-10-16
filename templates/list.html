@@ -1,0 +1,42 @@
+{% extends 'base.html' %}
+
+{% block header %}
+  {% block title %}Potential Roomates List{% endblock %}
+{% endblock %}
+
+{% block content %}
+  <header><h1 class="fw-bolder position-absolute top-0 start-50 translate-middle-x">Potential Roomates List</h1></header>
+
+    <br><br><br>
+
+    <table class="table">
+        <thead>
+          <tr>
+            <th scope="col">#</th>
+            <th scope="col">Name</th>
+            <th scope="col">Zip Code</th>
+            <th scope="col">Phone Number</th>
+            <th scope="col">Rating</th>
+          </tr>
+        </thead>
+
+    {% for i in range(5) %}
+    <tbody>
+        <tr>
+          <th class="table-primary"scope="row">1</th>
+          <td class="table-primary">Mark</td>
+          <td class="table-primary">Otto</td>
+          <td class="table-primary">@mdo</td>
+          <td class="table-primary">10.0</td>
+        </tr>
+        <tr>
+            <th class="table-secondary" scope="row">1</th>
+            <td class="table-secondary">Mark</td>
+            <td class="table-secondary">Otto</td>
+            <td class="table-secondary">@mdo</td>
+            <td class="table-secondary">10.0</td>
+          </tr>
+    {% endfor %}
+    </tbody>
+    </table>
+{% endblock %}
