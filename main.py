@@ -99,7 +99,7 @@ def response():
             score = 0
             if(key != session.get("user_id")):
                 other_zip = value["zip"]
-                dist = requests.get("https://www.zipcodeapi.com/rest/FgQQQxR4uLE58w2JXSuAM9BNdY4AAOenBGIO9QhzecYJscUQAJAVTdZItlLz3bwO/distance.json/"+str(zipcode)+"/"+str(other_zip)+"/mile")
+                dist = requests.get("https://www.zipcodeapi.com/rest/qHO1doqpr5yvFaiYXCfZ5crbSlZLkwwcCNyRsE54mcBwzbkbSjT8IwaoVoaKvV9I/distance.json/"+str(zipcode)+"/"+str(other_zip)+"/mile")
                 if(dist.json()["distance"] < float(miles)):
                     score += abs(float(age)-float(value["age"]))/100
                     score += abs(float(noise)-float(value["noise"]))/float(noise)
@@ -145,13 +145,14 @@ def lists():
         score = 0
         if(key != session.get("user_id")):
             other_zip = value["zip"]
-            dist = requests.get("https://www.zipcodeapi.com/rest/FgQQQxR4uLE58w2JXSuAM9BNdY4AAOenBGIO9QhzecYJscUQAJAVTdZItlLz3bwO/distance.json/"+str(zipcode)+"/"+str(other_zip)+"/mile")
+            dist = requests.get("https://www.zipcodeapi.com/rest/qHO1doqpr5yvFaiYXCfZ5crbSlZLkwwcCNyRsE54mcBwzbkbSjT8IwaoVoaKvV9I/distance.json/"+str(zipcode)+"/"+str(other_zip)+"/mile")
+            print("DIST, ", dist.json())
             if(dist.json()["distance"] < float(miles)):
                 score += abs(float(age)-float(value["age"]))/100
                 score += abs(float(noise)-float(value["noise"]))/float(noise)
                 score += abs(float(wakeup)-float(value["noise"]))/12.0
                 score += abs(float(sleep)-float(value["sleep"]))/12.0
-                print("Score: ", score)
+
                 
                 for i in range(similar.size):
                     if key == list(corpus.keys())[i]:
