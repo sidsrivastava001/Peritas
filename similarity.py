@@ -2,20 +2,16 @@ from sklearn.feature_extraction.text import TfidfVectorizer
 import numpy as np
 
 def similarity(doc1, corpus):
+    c = corpus.values()
+    print(c)
     vect = TfidfVectorizer(min_df=1, stop_words="english")                                                                                                                                                                                                   
-    tfidf = vect.fit_transform(corpus)                                                                                                                                                                                                                 
+    tfidf = vect.fit_transform(c)                                                                                                                                                                                                                 
     pairwise_similarity = tfidf * tfidf.T
     
     arr = pairwise_similarity.toarray()
-    np.fill_diagonal(arr, np.nan)                                                                                                                                                                                                 
-    input_idx = corpus.index(doc1)                                                                                                                                                                                                                                                                                                                                                                                                                                                                     
-    result_idx = np.nanargmax(arr[input_idx])
-    return result_idx     
+    np.fill_diagonal(arr, 0)                                                                                                                                                                                                 
+    input_idx = list(c).index(doc1)
 
-corpus= ["I'd like an apple", 
-        "An apple a day keeps the doctor away", 
-        "Never compare an apple to an orange", 
-        "I prefer scikit-learn to Orange", 
-        "The scikit-learn docs are Orange and Blue"]
+    return arr[input_idx]
 
-print(similarity("The scikit-learn docs are Orange and Blue", corpus))
+
